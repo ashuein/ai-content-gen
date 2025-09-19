@@ -1,0 +1,44 @@
+{
+  "$id": "envelope.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Message Envelope v1.0",
+  "description": "Standard versioned envelope for inter-module communication",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^1\\.[0-9]+\\.[0-9]+$",
+      "description": "Semantic version of the envelope format"
+    },
+    "producer": {
+      "type": "string",
+      "enum": ["M1-PlanGenerator", "M2-ScaffoldGenerator", "M2-ScaffoldAdapter", "M3-SectionGenerator", "M4-Assembler"],
+      "description": "Module that produced this message"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when message was created"
+    },
+    "correlationId": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Unique ID to track this request across modules"
+    },
+    "contentHash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$",
+      "description": "SHA256 hash of the payload content for integrity"
+    },
+    "compatible": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^1\\.[0-9]+\\.[0-9]+$"
+      },
+      "description": "List of compatible version ranges"
+    }
+  },
+  "required": ["version", "producer", "timestamp", "correlationId", "contentHash"],
+  "additionalProperties": false
+}

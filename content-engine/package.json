@@ -1,0 +1,48 @@
+{
+  "name": "content-engine",
+  "version": "1.0.0",
+  "description": "Production-ready LLM content generation engine with modular architecture",
+  "private": true,
+  "workspaces": [
+    "m1-plan",
+    "m2-scaffold",
+    "m3-section",
+    "m4-assembler",
+    "adapters",
+    "validators",
+    "fsm",
+    "compilers/*"
+  ],
+  "scripts": {
+    "build": "nx run-many --target=build --all",
+    "test": "nx run-many --target=test --all",
+    "test:contract": "nx run-many --target=test:contract --all",
+    "lint": "nx run-many --target=lint --all",
+    "validate:schemas": "ajv validate --all-errors --verbose schemas-shared/*.schema.json",
+    "dev": "nx run-many --target=dev --all --parallel",
+    "pipeline:run": "node dist/fsm/src/pipeline.js",
+    "cache:clean": "rm -rf cache/*",
+    "artifacts:clean": "rm -rf artifacts/*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "ajv": "^8.12.0",
+    "ajv-cli": "^5.0.0",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
+    "nx": "^17.2.0",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {
+    "mathjs": "^12.2.0",
+    "katex": "^0.16.8",
+    "semver": "^7.5.4",
+    "crypto": "^1.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

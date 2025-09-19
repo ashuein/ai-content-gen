@@ -1,0 +1,66 @@
+{
+  "$id": "chemspec.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Chemical Structure Specification v1.0",
+  "description": "Schema for chemical molecules supporting SMILES, InChI, and PubChem formats",
+  "type": "object",
+  "properties": {
+    "contentHash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "format": {"enum": ["smiles", "inchi", "pubchem_cid"]},
+    "data": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "format": {"const": "smiles"},
+            "smiles": {
+              "type": "string",
+              "pattern": "^[A-Za-z0-9@+\\-\\[\\]()=#/\\\\%:]+$",
+              "minLength": 1,
+              "maxLength": 1000
+            }
+          },
+          "required": ["format", "smiles"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "format": {"const": "inchi"},
+            "inchi": {
+              "type": "string",
+              "pattern": "^InChI=",
+              "maxLength": 2000
+            }
+          },
+          "required": ["format", "inchi"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "format": {"const": "pubchem_cid"},
+            "cid": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 999999999
+            }
+          },
+          "required": ["format", "cid"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "caption": {"type": "string", "maxLength": 200},
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "maxAtoms": {"type": "integer", "minimum": 1, "maximum": 100, "default": 50},
+        "maxBonds": {"type": "integer", "minimum": 1, "maximum": 200, "default": 100}
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["contentHash", "format", "data"],
+  "additionalProperties": false
+}

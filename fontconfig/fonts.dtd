@@ -1,0 +1,8 @@
+<!ENTITY % isoLatin SYSTEM "http://www.w3.org/TR/REC-xml">
+<!ELEMENT fontconfig (dir|config|cachedir|include)*>
+<!ELEMENT dir (#PCDATA)>
+<!ELEMENT cachedir (#PCDATA)>
+<!ELEMENT include (#PCDATA)>
+<!ATTLIST include ignore_missing (yes|no) "yes">
+<!ELEMENT config (rescan*)>
+<!ELEMENT rescan (#PCDATA)>

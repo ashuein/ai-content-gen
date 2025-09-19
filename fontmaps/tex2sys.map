@@ -1,0 +1,26 @@
+# dvisvgm fontmap: map TeX font names to explicit Windows font files
+# Roman
+cmr10 C:/Windows/Fonts/times.ttf
+cmr12 C:/Windows/Fonts/times.ttf
+cmr17 C:/Windows/Fonts/times.ttf
+# Bold roman
+cmbx10 C:/Windows/Fonts/timesbd.ttf
+cmbx12 C:/Windows/Fonts/timesbd.ttf
+# Sans
+cmss10 C:/Windows/Fonts/arial.ttf
+cmss12 C:/Windows/Fonts/arial.ttf
+cmbss10 C:/Windows/Fonts/arialbd.ttf
+# Typewriter
+cmtt10 C:/Windows/Fonts/consola.ttf
+cmtt12 C:/Windows/Fonts/consola.ttf
+# Math (Cambria TTC contains Cambria Math on most Windows installs)
+cmmi10 C:/Windows/Fonts/cambria.ttc
+cmsy10 C:/Windows/Fonts/cambria.ttc
+cmmib10 C:/Windows/Fonts/cambria.ttc
+# Fallbacks for Latin Modern names (Tectonic often uses lm* fonts)
+lmroman10-regular C:/Windows/Fonts/times.ttf
+lmroman10-bold C:/Windows/Fonts/timesbd.ttf
+lmss10-regular C:/Windows/Fonts/arial.ttf
+lmss10-bold C:/Windows/Fonts/arialbd.ttf
+lmtt10-regular C:/Windows/Fonts/consola.ttf
+lmmath10-regular C:/Windows/Fonts/cambria.ttc

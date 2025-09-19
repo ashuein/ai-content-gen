@@ -1,0 +1,57 @@
+{
+  "$id": "plotspec.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Plot Specification v1.0",
+  "description": "Schema for mathematical plot specifications using PGFPlots",
+  "type": "object",
+  "properties": {
+    "kind": {"const": "pgfplot"},
+    "contentHash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+    "title": {"type": "string", "maxLength": 100},
+    "x": {
+      "type": "object",
+      "properties": {
+        "min": {"type": "number"},
+        "max": {"type": "number"},
+        "ticks": {"type": "integer", "minimum": 2, "maximum": 20},
+        "label": {"type": "string", "maxLength": 50}
+      },
+      "required": ["min", "max", "label"],
+      "additionalProperties": false
+    },
+    "y": {
+      "type": "object",
+      "properties": {
+        "min": {"type": "number"},
+        "max": {"type": "number"},
+        "ticks": {"type": "integer", "minimum": 2, "maximum": 20},
+        "label": {"type": "string", "maxLength": 50}
+      },
+      "required": ["min", "max", "label"],
+      "additionalProperties": false
+    },
+    "expr": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_\\s+\\-*/^().]*$",
+      "maxLength": 200
+    },
+    "params": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z][a-zA-Z0-9_]*$": {"type": "number"}
+      },
+      "additionalProperties": false,
+      "maxProperties": 10
+    },
+    "style": {
+      "type": "object",
+      "properties": {
+        "grid": {"type": "boolean"},
+        "samples": {"type": "integer", "minimum": 16, "maximum": 2048}
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["kind", "contentHash", "x", "y", "expr"],
+  "additionalProperties": false
+}

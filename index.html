@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto Doc Render MVP</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; padding: 0; }
+      #app { display: grid; grid-template-columns: 1fr 320px; gap: 16px; padding: 16px; }
+      aside { border-left: 1px solid #eee; padding-left: 16px; }
+      .section { margin: 16px 0; padding-bottom: 12px; border-bottom: 1px dashed #eee; }
+      pre.debug { background: #fafafa; border: 1px solid #eee; padding: 8px; overflow: auto; max-height: 40vh; }
+      .svg-container svg { max-width: 100%; height: auto; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/client/main.tsx"></script>
+  </body>
+  </html>

@@ -1,0 +1,72 @@
+{
+  "$id": "docplan.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DocPlan v1.0",
+  "description": "Document planning output from M1-PlanGenerator module",
+  "type": "object",
+  "properties": {
+    "envelope": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string", "pattern": "^1\\.[0-9]+\\.[0-9]+$"},
+        "producer": {"const": "M1-PlanGenerator"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "correlationId": {"type": "string"},
+        "contentHash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "compatible": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["version", "producer", "timestamp", "correlationId", "contentHash"],
+      "additionalProperties": false
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "type": "object",
+          "properties": {
+            "title": {"type": "string", "minLength": 1, "maxLength": 200},
+            "subject": {"enum": ["Physics", "Chemistry", "Mathematics"]},
+            "grade": {"type": "string", "pattern": "^(Class )?(I|V|X|XI|XII|[1-9]|1[0-2])$"},
+            "difficulty": {"enum": ["comfort", "hustle", "advanced"]}
+          },
+          "required": ["title", "subject", "grade", "difficulty"],
+          "additionalProperties": false
+        },
+        "learning_objectives": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 10, "maxLength": 150},
+          "minItems": 3,
+          "maxItems": 8
+        },
+        "beats": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 12,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string", "pattern": "^beat-[a-z0-9-]+$"},
+              "headline": {"type": "string", "minLength": 5, "maxLength": 100},
+              "prereqs": {"type": "array", "items": {"type": "string", "pattern": "^beat-[a-z0-9-]+$"}},
+              "outcomes": {"type": "array", "items": {"type": "string", "minLength": 5}, "minItems": 1, "maxItems": 3},
+              "assets_suggested": {
+                "type": "array",
+                "items": {"type": "string", "pattern": "^(eq|plot|diagram|widget|chem):[a-z0-9_-]+$"},
+                "maxItems": 5
+              }
+            },
+            "required": ["id", "headline", "prereqs", "outcomes", "assets_suggested"],
+            "additionalProperties": false
+          }
+        },
+        "glossary_seed": {"type": "array", "items": {"type": "string"}, "maxItems": 20},
+        "misconceptions": {"type": "array", "items": {"type": "string"}, "maxItems": 10},
+        "assessment_outline": {"type": "array", "items": {"type": "string"}, "maxItems": 8}
+      },
+      "required": ["meta", "learning_objectives", "beats"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["envelope", "payload"],
+  "additionalProperties": false
+}

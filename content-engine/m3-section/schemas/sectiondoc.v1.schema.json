@@ -1,0 +1,188 @@
+{
+  "$id": "sectiondoc.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SectionDoc v1.0",
+  "description": "Generated section content from M3-SectionGenerator module",
+  "type": "object",
+  "properties": {
+    "envelope": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string", "pattern": "^1\\.[0-9]+\\.[0-9]+$"},
+        "producer": {"const": "M3-SectionGenerator"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "correlationId": {"type": "string"},
+        "contentHash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "compatible": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["version", "producer", "timestamp", "correlationId", "contentHash"],
+      "additionalProperties": false
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "sectionMeta": {
+          "type": "object",
+          "properties": {
+            "sectionId": {"type": "string", "pattern": "^sec-[0-9]+$"},
+            "title": {"type": "string"},
+            "chapterId": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+            "difficulty": {"enum": ["comfort", "hustle", "advanced"]},
+            "subject": {"enum": ["Physics", "Chemistry", "Mathematics"]},
+            "estimatedReadTime": {"type": "integer", "minimum": 1, "maximum": 60}
+          },
+          "required": ["sectionId", "title", "chapterId", "difficulty", "subject"],
+          "additionalProperties": false
+        },
+        "content": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "type": {"const": "prose"},
+                  "id": {"type": "string"},
+                  "markdown": {"type": "string", "minLength": 10},
+                  "wordCount": {"type": "integer", "minimum": 1}
+                },
+                "required": ["type", "id", "markdown"],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {"const": "equation"},
+                  "id": {"type": "string", "pattern": "^eq-[a-z0-9-]+-[0-9]{2,}$"},
+                  "tex": {"type": "string"},
+                  "check": {
+                    "type": "object",
+                    "properties": {
+                      "vars": {"type": "object", "additionalProperties": {"type": "number"}},
+                      "expr": {"type": "string"},
+                      "expect": {"type": "number"},
+                      "tol": {"type": "number"}
+                    },
+                    "required": ["vars", "expr", "expect", "tol"],
+                    "additionalProperties": false
+                  },
+                  "caption": {"type": "string", "maxLength": 200}
+                },
+                "required": ["type", "id", "tex", "check"],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {"const": "plot"},
+                  "id": {"type": "string", "pattern": "^plot-[a-z0-9-]+-[0-9]{2,}$"},
+                  "specRef": {"type": "string"},
+                  "caption": {"type": "string", "maxLength": 200}
+                },
+                "required": ["type", "id", "specRef"],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {"const": "diagram"},
+                  "id": {"type": "string", "pattern": "^fig-[a-z0-9-]+-[0-9]{2,}$"},
+                  "specRef": {"type": "string"},
+                  "caption": {"type": "string", "maxLength": 200}
+                },
+                "required": ["type", "id", "specRef"],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {"const": "chemistry"},
+                  "id": {"type": "string", "pattern": "^chem-[a-z0-9-]+-[0-9]{2,}$"},
+                  "smiles": {"type": "string"},
+                  "caption": {"type": "string", "maxLength": 200}
+                },
+                "required": ["type", "id", "smiles"],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {"const": "widget"},
+                  "id": {"type": "string", "pattern": "^wid-[a-z0-9-]+-[0-9]{2,}$"},
+                  "specRef": {"type": "string"},
+                  "caption": {"type": "string", "maxLength": 200}
+                },
+                "required": ["type", "id", "specRef"],
+                "additionalProperties": false
+              }
+            ]
+          }
+        },
+        "generatedAssets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"enum": ["plot", "diagram", "widget", "chemistry"]},
+              "specPath": {"type": "string"},
+              "contentHash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+            },
+            "required": ["id", "type", "specPath", "contentHash"],
+            "additionalProperties": false
+          }
+        },
+        "validationReport": {
+          "type": "object",
+          "properties": {
+            "gatesPassed": {"type": "array", "items": {"type": "string"}},
+            "gatesFailed": {"type": "array", "items": {"type": "string"}},
+            "warnings": {"type": "array", "items": {"type": "string"}},
+            "repairActions": {"type": "array", "items": {"type": "string"}},
+            "processingTime": {"type": "number", "minimum": 0}
+          },
+          "required": ["gatesPassed", "gatesFailed"],
+          "additionalProperties": false
+        },
+        "updatedRunningState": {
+          "type": "object",
+          "properties": {
+            "recap_150w": {"type": "string", "minLength": 50, "maxLength": 1200},
+            "introduced_terms": {"type": "array", "items": {"type": "string"}, "maxItems": 50},
+            "used_assets": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {"type": "string"},
+                  "type": {"enum": ["eq", "plot", "diagram", "widget", "chem"]},
+                  "contentHash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+                },
+                "required": ["id", "type", "contentHash"],
+                "additionalProperties": false
+              },
+              "maxItems": 20
+            },
+            "open_threads": {"type": "array", "items": {"type": "string"}, "maxItems": 10},
+            "style_guard": {
+              "type": "object",
+              "properties": {
+                "difficulty": {"enum": ["comfort", "hustle", "advanced"]},
+                "tone": {"type": "string", "maxLength": 100}
+              },
+              "required": ["difficulty"],
+              "additionalProperties": false
+            }
+          },
+          "required": ["recap_150w", "style_guard"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["sectionMeta", "content", "validationReport", "updatedRunningState"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["envelope", "payload"],
+  "additionalProperties": false
+}

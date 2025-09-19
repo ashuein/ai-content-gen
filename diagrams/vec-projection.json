@@ -1,0 +1,10 @@
+{
+  "canvas":{"width":480,"height":280,"grid":8,"snap":true},
+  "nodes":[
+    {"id":"O","kind":"point","x":60,"y":220,"label":"O"},
+    {"id":"v","kind":"arrow","from":[60,220],"to":[240,140],"label":"v"},
+    {"id":"w","kind":"arrow","from":[60,220],"to":[380,220],"label":"w"}
+  ],
+  "labels":[{"of":"v","pos":"mid","text":"θ","dx":-10,"dy":-10}],
+  "rules":{"requiredNodes":["O","v","w"],"forbidEdgeCrossings":true}
+}

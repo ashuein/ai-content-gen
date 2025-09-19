@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schema/plotspec.schema.json",
+  "title": "PlotSpec",
+  "type": "object",
+  "required": ["kind", "x", "y", "expr"],
+  "properties": {
+    "kind": { "const": "pgfplot" },
+    "title": { "type": "string" },
+    "x": { "type": "object", "required": ["min", "max", "ticks"], "properties": { "min": { "type": "number" }, "max": { "type": "number" }, "ticks": { "type": "integer", "minimum": 2 }, "label": { "type": "string" } }, "additionalProperties": false },
+    "y": { "type": "object", "required": ["min", "max", "ticks"], "properties": { "min": { "type": "number" }, "max": { "type": "number" }, "ticks": { "type": "integer", "minimum": 2 }, "label": { "type": "string" } }, "additionalProperties": false },
+    "expr": { "type": "string" },
+    "params": { "type": "object", "additionalProperties": { "type": "number" } },
+    "style": { "type": "object", "properties": { "grid": { "type": "boolean" }, "samples": { "type": "integer", "minimum": 11 } }, "additionalProperties": false }
+  },
+  "additionalProperties": false
+}

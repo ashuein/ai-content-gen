@@ -1,0 +1,14 @@
+{
+  "canvas": {"width": 480, "height": 320, "grid": 8, "snap": true},
+  "nodes": [
+    {"id": "M", "kind": "point", "x": 240, "y": 160, "label": "M"},
+    {"id": "a1", "kind": "arrow", "from": [240,160], "to": [240,80], "label": "g"},
+    {"id": "a2", "kind": "arrow", "from": [240,160], "to": [320,160], "label": "g"},
+    {"id": "a3", "kind": "arrow", "from": [240,160], "to": [240,240], "label": "g"},
+    {"id": "a4", "kind": "arrow", "from": [240,160], "to": [160,160], "label": "g"}
+  ],
+  "labels": [
+    {"of": "a1", "pos": "mid", "text": "r", "dx": -10, "dy": -10}
+  ],
+  "rules": {"requiredNodes": ["M","a1","a2","a3","a4"], "forbidEdgeCrossings": true}
+}

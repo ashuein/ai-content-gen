@@ -1,0 +1,527 @@
+{
+  "11_chemistry_1": {
+    "chapterName": "Some Basic Concepts of Chemistry",
+    "pdfPath": "course_database\\ncert\\class_11_chemistry_part1\\kech101.pdf",
+    "class": "11",
+    "subject": "chemistry",
+    "chapterNumber": 1
+  },
+  "11_chemistry_2": {
+    "chapterName": "Structure of Atom",
+    "pdfPath": "course_database\\ncert\\class_11_chemistry_part1\\kech102.pdf",
+    "class": "11",
+    "subject": "chemistry",
+    "chapterNumber": 2
+  },
+  "11_chemistry_3": {
+    "chapterName": "Classification of Elements and Periodicity in Properties",
+    "pdfPath": "course_database\\ncert\\class_11_chemistry_part1\\kech103.pdf",
+    "class": "11",
+    "subject": "chemistry",
+    "chapterNumber": 3
+  },
+  "11_chemistry_4": {
+    "chapterName": "Chemical Bonding and Molecular Structure",
+    "pdfPath": "course_database\\ncert\\class_11_chemistry_part1\\kech104.pdf",
+    "class": "11",
+    "subject": "chemistry",
+    "chapterNumber": 4
+  },
+  "11_chemistry_5": {
+    "chapterName": "States of Matter",
+    "pdfPath": "course_database\\ncert\\class_11_chemistry_part1\\kech105.pdf",
+    "class": "11",
+    "subject": "chemistry",
+    "chapterNumber": 5
+  },
+  "11_chemistry_6": {
+    "chapterName": "Thermodynamics",
+    "pdfPath": "course_database\\ncert\\class_11_chemistry_part1\\kech106.pdf",
+    "class": "11",
+    "subject": "chemistry",
+    "chapterNumber": 6
+  },
+  "11_chemistry_7": {
+    "chapterName": "Equilibrium",
+    "pdfPath": "course_database\\ncert\\class_11_chemistry_part2\\kech201.pdf",
+    "class": "11",
+    "subject": "chemistry",
+    "chapterNumber": 7
+  },
+  "11_chemistry_8": {
+    "chapterName": "Redox Reactions",
+    "pdfPath": "course_database\\ncert\\class_11_chemistry_part2\\kech202.pdf",
+    "class": "11",
+    "subject": "chemistry",
+    "chapterNumber": 8
+  },
+  "11_chemistry_9": {
+    "chapterName": "Hydrogen",
+    "pdfPath": "course_database\\ncert\\class_11_chemistry_part2\\kech203.pdf",
+    "class": "11",
+    "subject": "chemistry",
+    "chapterNumber": 9
+  },
+  "11_chemistry_null": {
+    "chapterName": "Chapter from kech2ps",
+    "pdfPath": "course_database\\ncert\\class_11_chemistry_part2\\kech2ps.pdf",
+    "class": "11",
+    "subject": "chemistry",
+    "chapterNumber": null
+  },
+  "11_mathematics_1": {
+    "chapterName": "Sets",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh101.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 1
+  },
+  "11_mathematics_2": {
+    "chapterName": "Relations and Functions",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh102.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 2
+  },
+  "11_mathematics_3": {
+    "chapterName": "Trigonometric Functions",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh103.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 3
+  },
+  "11_mathematics_4": {
+    "chapterName": "Principle of Mathematical Induction",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh104.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 4
+  },
+  "11_mathematics_5": {
+    "chapterName": "Complex Numbers and Quadratic Equations",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh105.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 5
+  },
+  "11_mathematics_6": {
+    "chapterName": "Linear Inequalities",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh106.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 6
+  },
+  "11_mathematics_7": {
+    "chapterName": "Permutations and Combinations",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh107.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 7
+  },
+  "11_mathematics_8": {
+    "chapterName": "Binomial Theorem",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh108.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 8
+  },
+  "11_mathematics_9": {
+    "chapterName": "Sequences and Series",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh109.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 9
+  },
+  "11_mathematics_10": {
+    "chapterName": "Straight Lines",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh110.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 10
+  },
+  "11_mathematics_11": {
+    "chapterName": "Conic Sections",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh111.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 11
+  },
+  "11_mathematics_12": {
+    "chapterName": "Introduction to Three Dimensional Geometry",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh112.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 12
+  },
+  "11_mathematics_13": {
+    "chapterName": "Limits and Derivatives",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh113.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 13
+  },
+  "11_mathematics_14": {
+    "chapterName": "Mathematical Reasoning",
+    "pdfPath": "course_database\\ncert\\class_11_mathematics\\kemh114.pdf",
+    "class": "11",
+    "subject": "mathematics",
+    "chapterNumber": 14
+  },
+  "11_physics_1": {
+    "chapterName": "Physical World",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part1\\keph101.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 1
+  },
+  "11_physics_2": {
+    "chapterName": "Units and Measurements",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part1\\keph102.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 2
+  },
+  "11_physics_3": {
+    "chapterName": "Motion in a Straight Line",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part1\\keph103.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 3
+  },
+  "11_physics_4": {
+    "chapterName": "Motion in a Plane",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part1\\keph104.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 4
+  },
+  "11_physics_5": {
+    "chapterName": "Laws of Motion",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part1\\keph105.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 5
+  },
+  "11_physics_6": {
+    "chapterName": "Work, Energy and Power",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part1\\keph106.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 6
+  },
+  "11_physics_7": {
+    "chapterName": "System of Particles and Rotational Motion",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part1\\keph107.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 7
+  },
+  "11_physics_8": {
+    "chapterName": "Gravitation",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part2\\keph201.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 8
+  },
+  "11_physics_9": {
+    "chapterName": "Mechanical Properties of Solids",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part2\\keph202.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 9
+  },
+  "11_physics_10": {
+    "chapterName": "Mechanical Properties of Fluids",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part2\\keph203.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 10
+  },
+  "11_physics_11": {
+    "chapterName": "Thermal Properties of Matter",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part2\\keph204.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 11
+  },
+  "11_physics_12": {
+    "chapterName": "Thermodynamics",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part2\\keph205.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 12
+  },
+  "11_physics_13": {
+    "chapterName": "Kinetic Theory",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part2\\keph206.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 13
+  },
+  "11_physics_14": {
+    "chapterName": "Oscillations",
+    "pdfPath": "course_database\\ncert\\class_11_physics_part2\\keph207.pdf",
+    "class": "11",
+    "subject": "physics",
+    "chapterNumber": 14
+  },
+  "12_chemistry_1": {
+    "chapterName": "Solutions",
+    "pdfPath": "course_database\\ncert\\class_12_chemistry_part1\\lech101.pdf",
+    "class": "12",
+    "subject": "chemistry",
+    "chapterNumber": 1
+  },
+  "12_chemistry_2": {
+    "chapterName": "Electrochemistry",
+    "pdfPath": "course_database\\ncert\\class_12_chemistry_part1\\lech102.pdf",
+    "class": "12",
+    "subject": "chemistry",
+    "chapterNumber": 2
+  },
+  "12_chemistry_3": {
+    "chapterName": "Chemical Kinetics",
+    "pdfPath": "course_database\\ncert\\class_12_chemistry_part1\\lech103.pdf",
+    "class": "12",
+    "subject": "chemistry",
+    "chapterNumber": 3
+  },
+  "12_chemistry_4": {
+    "chapterName": "d- and f- Block Elements",
+    "pdfPath": "course_database\\ncert\\class_12_chemistry_part1\\lech104.pdf",
+    "class": "12",
+    "subject": "chemistry",
+    "chapterNumber": 4
+  },
+  "12_chemistry_5": {
+    "chapterName": "Coordination Compounds",
+    "pdfPath": "course_database\\ncert\\class_12_chemistry_part1\\lech105.pdf",
+    "class": "12",
+    "subject": "chemistry",
+    "chapterNumber": 5
+  },
+  "12_chemistry_6": {
+    "chapterName": "Haloalkanes and Haloarenes",
+    "pdfPath": "course_database\\ncert\\class_12_chemistry_part2\\lech201.pdf",
+    "class": "12",
+    "subject": "chemistry",
+    "chapterNumber": 6
+  },
+  "12_chemistry_7": {
+    "chapterName": "Alcohols, Phenols and Ethers",
+    "pdfPath": "course_database\\ncert\\class_12_chemistry_part2\\lech202.pdf",
+    "class": "12",
+    "subject": "chemistry",
+    "chapterNumber": 7
+  },
+  "12_chemistry_8": {
+    "chapterName": "Aldehydes, Ketones and Carboxylic Acids",
+    "pdfPath": "course_database\\ncert\\class_12_chemistry_part2\\lech203.pdf",
+    "class": "12",
+    "subject": "chemistry",
+    "chapterNumber": 8
+  },
+  "12_chemistry_9": {
+    "chapterName": "Amines",
+    "pdfPath": "course_database\\ncert\\class_12_chemistry_part2\\lech204.pdf",
+    "class": "12",
+    "subject": "chemistry",
+    "chapterNumber": 9
+  },
+  "12_chemistry_10": {
+    "chapterName": "Biomolecules",
+    "pdfPath": "course_database\\ncert\\class_12_chemistry_part2\\lech205.pdf",
+    "class": "12",
+    "subject": "chemistry",
+    "chapterNumber": 10
+  },
+  "12_mathematics_1": {
+    "chapterName": "Relations and Functions",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part1\\lemh101.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 1
+  },
+  "12_mathematics_2": {
+    "chapterName": "Inverse Trigonometric Functions",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part1\\lemh102.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 2
+  },
+  "12_mathematics_3": {
+    "chapterName": "Matrices",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part1\\lemh103.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 3
+  },
+  "12_mathematics_4": {
+    "chapterName": "Determinants",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part1\\lemh104.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 4
+  },
+  "12_mathematics_5": {
+    "chapterName": "Continuity and Differentiability",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part1\\lemh105.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 5
+  },
+  "12_mathematics_6": {
+    "chapterName": "Application of Derivatives",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part1\\lemh106.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 6
+  },
+  "12_mathematics_7": {
+    "chapterName": "Integrals",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part2\\lemh201.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 7
+  },
+  "12_mathematics_8": {
+    "chapterName": "Application of Integrals",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part2\\lemh202.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 8
+  },
+  "12_mathematics_9": {
+    "chapterName": "Differential Equations",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part2\\lemh203.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 9
+  },
+  "12_mathematics_10": {
+    "chapterName": "Vector Algebra",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part2\\lemh204.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 10
+  },
+  "12_mathematics_11": {
+    "chapterName": "Three Dimensional Geometry",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part2\\lemh205.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 11
+  },
+  "12_mathematics_12": {
+    "chapterName": "Linear Programming",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part2\\lemh206.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 12
+  },
+  "12_mathematics_13": {
+    "chapterName": "Probability",
+    "pdfPath": "course_database\\ncert\\class_12_mathematics_part2\\lemh207.pdf",
+    "class": "12",
+    "subject": "mathematics",
+    "chapterNumber": 13
+  },
+  "12_physics_1": {
+    "chapterName": "Electric Charges and Fields",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part1\\leph101.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 1
+  },
+  "12_physics_2": {
+    "chapterName": "Electrostatic Potential and Capacitance",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part1\\leph102.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 2
+  },
+  "12_physics_3": {
+    "chapterName": "Current Electricity",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part1\\leph103.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 3
+  },
+  "12_physics_4": {
+    "chapterName": "Moving Charges and Magnetism",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part1\\leph104.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 4
+  },
+  "12_physics_5": {
+    "chapterName": "Magnetism and Matter",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part1\\leph105.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 5
+  },
+  "12_physics_6": {
+    "chapterName": "Electromagnetic Induction",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part1\\leph106.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 6
+  },
+  "12_physics_7": {
+    "chapterName": "Alternating Current",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part1\\leph107.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 7
+  },
+  "12_physics_8": {
+    "chapterName": "Electromagnetic Waves",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part1\\leph108.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 8
+  },
+  "12_physics_9": {
+    "chapterName": "Ray Optics and Optical Instruments",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part2\\leph201.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 9
+  },
+  "12_physics_10": {
+    "chapterName": "Wave Optics",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part2\\leph202.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 10
+  },
+  "12_physics_11": {
+    "chapterName": "Dual Nature of Radiation and Matter",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part2\\leph203.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 11
+  },
+  "12_physics_12": {
+    "chapterName": "Atoms",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part2\\leph204.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 12
+  },
+  "12_physics_13": {
+    "chapterName": "Nuclei",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part2\\leph205.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 13
+  },
+  "12_physics_14": {
+    "chapterName": "Semiconductor Electronics",
+    "pdfPath": "course_database\\ncert\\class_12_physics_part2\\leph206.pdf",
+    "class": "12",
+    "subject": "physics",
+    "chapterNumber": 14
+  }
+}

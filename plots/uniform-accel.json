@@ -1,0 +1,9 @@
+{
+  "kind":"pgfplot",
+  "title":"s(t)=ut+½at^2",
+  "x":{"min":0,"max":10,"ticks":6,"label":"$t\\, (s)$"},
+  "y":{"min":0,"max":200,"ticks":6,"label":"$s\\, (m)$"},
+  "expr":"u*x + 0.5*a*x^2",
+  "params":{"u":5,"a":2},
+  "style":{"grid":true,"samples":201}
+}

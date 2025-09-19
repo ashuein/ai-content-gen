@@ -1,0 +1,40 @@
+{
+  "name": "ai_content_gen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "chapter:build": "tsx scripts/build-chapter.ts",
+    "chapter:build:gravitation": "tsx scripts/build-chapter.ts --input CR_chapters/gravitation.json",
+    "content:generate": "tsx scripts/generate-chapter.ts",
+    "content:build": "npm run content:generate && npm run chapter:build",
+    "dev:full": "npm run content:build && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "dotenv": "^16.4.5",
+    "katex": "^0.16.22",
+    "mathjs": "^14.7.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "svgo": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.5.1",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.3",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5"
+  }
+}

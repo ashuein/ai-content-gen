@@ -1,0 +1,78 @@
+{
+  "$id": "id-conventions.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Deterministic ID Conventions v1.0",
+  "description": "Schema defining stable ID generation patterns for Reader compatibility",
+  "type": "object",
+  "properties": {
+    "patterns": {
+      "type": "object",
+      "properties": {
+        "chapter": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "description": "Chapter slug pattern: lowercase, numbers, hyphens only"
+        },
+        "section": {
+          "type": "string",
+          "pattern": "^sec-[0-9]+$",
+          "description": "Section ID pattern: sec-{number}"
+        },
+        "equation": {
+          "type": "string",
+          "pattern": "^eq-[a-z0-9-]+-[0-9]{2,}$",
+          "description": "Equation ID pattern: eq-{chapter-slug}-{zero-padded-sequence}"
+        },
+        "plot": {
+          "type": "string",
+          "pattern": "^plot-[a-z0-9-]+-[0-9]{2,}$",
+          "description": "Plot ID pattern: plot-{chapter-slug}-{zero-padded-sequence}"
+        },
+        "diagram": {
+          "type": "string",
+          "pattern": "^fig-[a-z0-9-]+-[0-9]{2,}$",
+          "description": "Diagram ID pattern: fig-{chapter-slug}-{zero-padded-sequence}"
+        },
+        "widget": {
+          "type": "string",
+          "pattern": "^wid-[a-z0-9-]+-[0-9]{2,}$",
+          "description": "Widget ID pattern: wid-{chapter-slug}-{zero-padded-sequence}"
+        },
+        "chemistry": {
+          "type": "string",
+          "pattern": "^chem-[a-z0-9-]+-[0-9]{2,}$",
+          "description": "Chemistry ID pattern: chem-{chapter-slug}-{zero-padded-sequence}"
+        }
+      },
+      "required": ["chapter", "section", "equation", "plot", "diagram", "widget", "chemistry"],
+      "additionalProperties": false
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "requireUnique": {
+          "type": "boolean",
+          "description": "Enforce uniqueness within each chapter"
+        },
+        "maxSequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 999,
+          "description": "Maximum sequence number allowed"
+        },
+        "chapterSlugRules": {
+          "type": "object",
+          "properties": {
+            "maxLength": {"type": "integer", "minimum": 1, "maximum": 50},
+            "allowedChars": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+            "noConsecutiveHyphens": {"type": "boolean"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["patterns"],
+  "additionalProperties": false
+}

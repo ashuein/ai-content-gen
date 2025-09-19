@@ -1,0 +1,11 @@
+{
+  "meta": {"title":"Gravitation I","grade":"XI","subject":"Physics","version":"1.0.0"},
+  "sections": [
+    {"id":"intro","type":"paragraph","md":"Newton's law of universal gravitation states $F=G\\dfrac{Mm}{r^2}$. Near Earth's surface $g=\\dfrac{GM}{(R+h)^2}$ and the escape speed is $v_{esc}=\\sqrt{\\dfrac{2GM}{r}}$."},
+    {"id":"eq_F","type":"equation","tex":"F=G\\frac{Mm}{r^2}","check":{"vars":{"G":6.674e-11,"M":5.972e24,"m":1,"r":6.371e6},"expr":"G*M*m/r^2","expect":9.81,"tol":1e-2}},
+    {"id":"plot_g","type":"plot","specRef":"plots/gravitation-g-vs-r.json"},
+    {"id":"chem_O2","type":"chem","smiles":"O","caption":"Oxygen atom (placeholder)"},
+    {"id":"diagram_grav","type":"diagram","specRef":"diagrams/gravity-field.json"},
+    {"id":"wid_escape","type":"widget","widget":{"kind":"formula-playground","expr":"sqrt(2*G*M/r)","params":[{"name":"G","min":6.67e-11,"max":6.68e-11,"step":1e-14,"default":6.674e-11},{"name":"M","min":5.90e24,"max":6.00e24,"step":1e21,"default":5.972e24},{"name":"r","min":6.4e6,"max":4.0e7,"step":1e5,"default":6.371e6}],"display":{"latex":"v=\\sqrt{2GM/r}"}}}
+  ]
+}

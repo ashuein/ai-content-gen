@@ -1,0 +1,37 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "npmScope": "content-engine",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "test", "lint", "validate"],
+        "parallel": 4
+      }
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"],
+      "outputs": ["{projectRoot}/dist"]
+    },
+    "test": {
+      "inputs": ["default", "^production", "{projectRoot}/jest.config.js"],
+      "outputs": ["{projectRoot}/coverage"]
+    },
+    "lint": {
+      "inputs": ["default", "{projectRoot}/.eslintrc.json"],
+      "outputs": []
+    }
+  },
+  "generators": {
+    "@nx/node:application": {
+      "bundler": "webpack"
+    }
+  },
+  "defaultProject": "content-engine"
+}

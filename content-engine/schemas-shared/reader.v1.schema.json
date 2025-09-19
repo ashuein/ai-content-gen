@@ -1,0 +1,129 @@
+{
+  "$id": "reader.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Reader DocJSON Contract",
+  "description": "Exact schema that M4 Assembler must produce for Reader compatibility",
+  "type": "object",
+  "required": ["meta", "sections"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["title", "grade", "subject", "version"],
+      "properties": {
+        "title": { "type": "string" },
+        "grade": { "type": "string" },
+        "subject": { "type": "string" },
+        "version": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": ["id", "type", "md"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"const": "paragraph"},
+              "md": {"type": "string"}
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": ["id", "type", "tex", "check"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"const": "equation"},
+              "tex": {"type": "string"},
+              "check": {
+                "type": "object",
+                "required": ["vars", "expr", "expect", "tol"],
+                "properties": {
+                  "vars": {"type": "object", "additionalProperties": {"type": "number"}},
+                  "expr": {"type": "string"},
+                  "expect": {"type": "number"},
+                  "tol": {"type": "number"}
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": ["id", "type", "specRef"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"const": "plot"},
+              "specRef": {"type": "string"}
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": ["id", "type", "smiles"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"const": "chem"},
+              "smiles": {"type": "string"},
+              "caption": {"type": "string"}
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": ["id", "type", "specRef"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"const": "diagram"},
+              "specRef": {"type": "string"}
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": ["id", "type", "widget"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"const": "widget"},
+              "widget": {
+                "type": "object",
+                "required": ["kind", "expr", "params"],
+                "properties": {
+                  "kind": {"const": "formula-playground"},
+                  "expr": {"type": "string"},
+                  "params": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": ["name", "min", "max", "step", "default"],
+                      "properties": {
+                        "name": {"type": "string"},
+                        "min": {"type": "number"},
+                        "max": {"type": "number"},
+                        "step": {"type": "number"},
+                        "default": {"type": "number"}
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "display": {
+                    "type": "object",
+                    "properties": {"latex": {"type": "string"}},
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}

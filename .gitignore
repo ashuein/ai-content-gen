@@ -1,0 +1,71 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Environment variables and secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Runtime and cache
+.cache/
+.vite/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python virtual environment
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Content Engine outputs and cache
+content-engine/artifacts/
+content-engine/cache/
+content-engine/test-cache/
+content-engine/test-output/
+content-engine/demo-output/
+
+# Rendered outputs (can be regenerated)
+CR_rendered/
+
+# Temporary files
+*.tmp
+*.temp
+
+# LaTeX compilation artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+
+# Large binary assets (optional - uncomment if repo gets too large)
+# *.exe
+# *.pdf
+# ghostpdl-10.06.0/

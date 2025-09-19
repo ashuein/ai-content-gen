@@ -1,0 +1,96 @@
+{
+  "$id": "sectioncontext.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SectionContext v1.0",
+  "description": "Adapted context for M3-SectionGenerator from M2-Scaffold output",
+  "type": "object",
+  "properties": {
+    "envelope": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string", "pattern": "^1\\.[0-9]+\\.[0-9]+$"},
+        "producer": {"const": "M2-ScaffoldAdapter"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "correlationId": {"type": "string"},
+        "contentHash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "compatible": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["version", "producer", "timestamp", "correlationId", "contentHash"],
+      "additionalProperties": false
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "type": "object",
+          "properties": {
+            "chapterId": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+            "sectionId": {"type": "string", "pattern": "^sec-[0-9]+$"},
+            "sectionTitle": {"type": "string", "minLength": 5, "maxLength": 100},
+            "difficulty": {"enum": ["comfort", "hustle", "advanced"]},
+            "subject": {"enum": ["Physics", "Chemistry", "Mathematics"]},
+            "assetMarkers": {
+              "type": "array",
+              "items": {"type": "string", "pattern": "^\\{\\{(eq|plot|diagram|widget|chem):[a-z0-9_-]+\\}\\}$"},
+              "maxItems": 10
+            },
+            "transitions": {
+              "type": "object",
+              "properties": {
+                "in": {"type": "string", "maxLength": 300},
+                "out": {"type": "string", "maxLength": 300}
+              },
+              "required": ["in", "out"],
+              "additionalProperties": false
+            },
+            "conceptSequence": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 3, "maxLength": 100},
+              "minItems": 1,
+              "maxItems": 8
+            }
+          },
+          "required": ["chapterId", "sectionId", "sectionTitle", "difficulty", "subject", "assetMarkers", "transitions", "conceptSequence"],
+          "additionalProperties": false
+        },
+        "runningState": {
+          "type": "object",
+          "properties": {
+            "recap_150w": {"type": "string", "minLength": 50, "maxLength": 1200},
+            "introduced_terms": {"type": "array", "items": {"type": "string"}, "maxItems": 50},
+            "used_assets": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {"type": "string"},
+                  "type": {"enum": ["eq", "plot", "diagram", "widget", "chem"]},
+                  "contentHash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+                },
+                "required": ["id", "type", "contentHash"],
+                "additionalProperties": false
+              },
+              "maxItems": 20
+            },
+            "open_threads": {"type": "array", "items": {"type": "string"}, "maxItems": 10},
+            "style_guard": {
+              "type": "object",
+              "properties": {
+                "difficulty": {"enum": ["comfort", "hustle", "advanced"]},
+                "tone": {"type": "string", "maxLength": 100}
+              },
+              "required": ["difficulty"],
+              "additionalProperties": false
+            }
+          },
+          "required": ["recap_150w", "style_guard"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["context", "runningState"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["envelope", "payload"],
+  "additionalProperties": false
+}

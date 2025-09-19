@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schema/diagramspec.schema.json",
+  "title": "DiagramSpec",
+  "type": "object",
+  "required": ["canvas", "nodes"],
+  "properties": {
+    "canvas": { "type": "object", "required": ["width", "height", "grid"], "properties": { "width": { "type": "integer", "minimum": 64 }, "height": { "type": "integer", "minimum": 64 }, "grid": { "type": "integer", "minimum": 2 }, "snap": { "type": "boolean" } }, "additionalProperties": false },
+    "nodes": { "type": "array", "minItems": 1, "items": {
+      "oneOf": [
+        { "type": "object", "required": ["id", "kind", "x", "y"], "properties": { "id": { "type": "string" }, "kind": { "const": "point" }, "x": { "type": "number" }, "y": { "type": "number" }, "label": { "type": "string" } }, "additionalProperties": false },
+        { "type": "object", "required": ["id", "kind", "from", "to"], "properties": { "id": { "type": "string" }, "kind": { "const": "arrow" }, "from": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 }, "to": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 }, "label": { "type": "string" } }, "additionalProperties": false }
+      ]
+    } },
+    "labels": { "type": "array", "items": { "type": "object", "required": ["of", "pos", "text"], "properties": { "of": { "type": "string" }, "pos": { "enum": ["mid", "start", "end"] }, "text": { "type": "string" }, "dx": { "type": "number" }, "dy": { "type": "number" } }, "additionalProperties": false } },
+    "rules": { "type": "object", "properties": { "requiredNodes": { "type": "array", "items": { "type": "string" } }, "forbidEdgeCrossings": { "type": "boolean" } }, "additionalProperties": false }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,89 @@
+{
+  "$id": "scaffold.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scaffold v1.0",
+  "description": "Content scaffolding output from M2-ScaffoldGenerator module",
+  "type": "object",
+  "properties": {
+    "envelope": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string", "pattern": "^1\\.[0-9]+\\.[0-9]+$"},
+        "producer": {"const": "M2-ScaffoldGenerator"},
+        "timestamp": {"type": "string", "format": "date-time"},
+        "correlationId": {"type": "string"},
+        "contentHash": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+        "compatible": {"type": "array", "items": {"type": "string"}}
+      },
+      "required": ["version", "producer", "timestamp", "correlationId", "contentHash"],
+      "additionalProperties": false
+    },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "meta": {
+          "type": "object",
+          "properties": {
+            "title": {"type": "string"},
+            "subject": {"enum": ["Physics", "Chemistry", "Mathematics"]},
+            "grade": {"type": "string"},
+            "difficulty": {"enum": ["comfort", "hustle", "advanced"]},
+            "chapterSlug": {"type": "string", "pattern": "^[a-z0-9-]+$"}
+          },
+          "required": ["title", "subject", "grade", "difficulty", "chapterSlug"],
+          "additionalProperties": false
+        },
+        "sections": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {"type": "string", "pattern": "^sec-[0-9]+$"},
+              "title": {"type": "string", "minLength": 5, "maxLength": 100},
+              "beatIds": {"type": "array", "items": {"type": "string", "pattern": "^beat-[a-z0-9-]+$"}},
+              "where_assets_go": {
+                "type": "array",
+                "items": {"type": "string", "pattern": "^\\{\\{(eq|plot|diagram|widget|chem):[a-z0-9_-]+\\}\\}$"},
+                "maxItems": 10
+              },
+              "transitions": {
+                "type": "object",
+                "properties": {
+                  "in": {"type": "string", "maxLength": 300},
+                  "out": {"type": "string", "maxLength": 300}
+                },
+                "required": ["in", "out"],
+                "additionalProperties": false
+              },
+              "concept_sequence": {
+                "type": "array",
+                "items": {"type": "string", "minLength": 3, "maxLength": 100},
+                "minItems": 1,
+                "maxItems": 8
+              },
+              "estimated_length": {"type": "integer", "minimum": 200, "maximum": 2000}
+            },
+            "required": ["id", "title", "beatIds", "where_assets_go", "transitions", "concept_sequence"],
+            "additionalProperties": false
+          }
+        },
+        "global_context": {
+          "type": "object",
+          "properties": {
+            "learning_objectives": {"type": "array", "items": {"type": "string"}},
+            "prerequisite_knowledge": {"type": "array", "items": {"type": "string"}},
+            "common_misconceptions": {"type": "array", "items": {"type": "string"}},
+            "assessment_strategy": {"type": "string", "maxLength": 500}
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": ["meta", "sections"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["envelope", "payload"],
+  "additionalProperties": false
+}
