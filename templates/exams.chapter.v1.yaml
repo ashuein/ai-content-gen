@@ -1,0 +1,285 @@
+# Educational Content Generation Template v1.0
+# Template for generating exam-focused chapter content
+# Supports difficulty-based customization for Physics, Chemistry, Mathematics
+
+prompt_profile: "exams.chapter"
+template_version: "v1"
+
+# LLM Configuration
+llm_directives:
+  temperature: 0.1          # Low temperature for consistent educational content
+  top_p: 0.95              # Slight randomness for natural language
+  max_output_tokens: 50000  # Maximum tokens for comprehensive chapter generation
+
+# Difficulty-based pedagogical policies
+difficulty_policies:
+  comfort:
+    summary: "Gentle introduction with concrete examples and step-by-step explanations"
+    exposition: "70%"        # Heavy focus on explanation
+    practice: "20%"          # Light practice problems
+    extras: "10%"            # Minimal advanced content
+    item_mix:
+      mcq: "60%"             # Multiple choice questions
+      numerical: "30%"       # Numerical problems
+      ar: "10%"              # Application and reasoning
+    blooms: "Remember, Understand"
+    cognitive_load: "low"
+    scaffolding: "high"
+    examples_per_concept: 3
+
+  hustle:
+    summary: "Balanced theory and application with moderate challenge"
+    exposition: "50%"        # Balanced explanation
+    practice: "35%"          # Moderate practice
+    extras: "15%"            # Some advanced topics
+    item_mix:
+      mcq: "40%"
+      numerical: "40%"
+      ar: "20%"
+    blooms: "Apply, Analyze"
+    cognitive_load: "medium"
+    scaffolding: "medium"
+    examples_per_concept: 2
+
+  advanced:
+    summary: "Deep conceptual understanding with challenging applications"
+    exposition: "30%"        # Concise explanations
+    practice: "50%"          # Heavy practice focus
+    extras: "20%"            # Significant advanced content
+    item_mix:
+      mcq: "20%"
+      numerical: "40%"
+      ar: "40%"              # Heavy application and reasoning
+    blooms: "Evaluate, Create"
+    cognitive_load: "high"
+    scaffolding: "low"
+    examples_per_concept: 1
+
+# Subject-specific content guidelines
+subject_guidelines:
+  Physics:
+    mathematical_rigor: "high"
+    experimental_context: "medium"
+    real_world_applications: "high"
+    diagram_emphasis: "force diagrams, wave patterns, circuit diagrams"
+    equation_format: "LaTeX with proper units"
+    common_misconceptions: "vector addition, energy conservation, wave-particle duality"
+
+  Chemistry:
+    mathematical_rigor: "medium"
+    experimental_context: "high"
+    real_world_applications: "medium"
+    diagram_emphasis: "molecular structures, reaction mechanisms, phase diagrams"
+    equation_format: "chemical equations with proper balancing"
+    common_misconceptions: "ionic vs covalent bonding, reaction rates vs equilibrium"
+
+  Mathematics:
+    mathematical_rigor: "very high"
+    experimental_context: "low"
+    real_world_applications: "medium"
+    diagram_emphasis: "geometric figures, function graphs, statistical plots"
+    equation_format: "strict mathematical notation"
+    common_misconceptions: "function vs equation, correlation vs causation"
+
+# Asset generation guidelines
+asset_specifications:
+  plots:
+    preferred_style: "clean, academic"
+    color_scheme: "colorblind-friendly"
+    grid_style: "subtle"
+    font_family: "Computer Modern"
+
+  diagrams:
+    style: "technical illustration"
+    arrow_style: "filled"
+    label_positioning: "clear, non-overlapping"
+
+  chemistry:
+    bond_representation: "stick model preferred"
+    atom_labels: "standard IUPAC"
+    stereochemistry: "wedge-dash notation"
+
+# System prompt template
+system_prompt: |
+  You are an expert educational content creator specializing in {{grade}} {{subject}} curriculum.
+
+  ## Content Generation Guidelines:
+  - **Standard**: {{standard}} curriculum alignment
+  - **Difficulty Level**: {{difficulty}} - {{difficulty_summary}}
+  - **Content Distribution**: {{difficulty_exposition}} exposition, {{difficulty_practice}} practice, {{difficulty_extras}} advanced topics
+  - **Pedagogical Approach**: Focus on {{difficulty_blooms}} cognitive levels
+  - **Assessment Mix**: {{difficulty_item_mcq}} MCQ, {{difficulty_item_numerical}} numerical, {{difficulty_item_ar}} application/reasoning
+
+  ## Subject-Specific Requirements ({{subject}}):
+  {{#if_physics}}
+  - Emphasize mathematical derivations and physical intuition
+  - Include force diagrams, energy considerations, and real-world applications
+  - Use proper vector notation and SI units throughout
+  - Address common misconceptions about {{physics_misconceptions}}
+  {{/if_physics}}
+
+  {{#if_chemistry}}
+  - Balance theoretical concepts with experimental observations
+  - Include molecular structures, reaction mechanisms, and chemical equations
+  - Emphasize bonding, intermolecular forces, and periodic trends
+  - Address common misconceptions about {{chemistry_misconceptions}}
+  {{/if_chemistry}}
+
+  {{#if_mathematics}}
+  - Maintain strict mathematical rigor and proper notation
+  - Include step-by-step derivations and geometric intuition
+  - Connect abstract concepts to practical applications where possible
+  - Address common misconceptions about {{math_misconceptions}}
+  {{/if_mathematics}}
+
+  ## Output Requirements:
+  Generate a complete chapter in Reader DocJSON v1 format with:
+
+  1. **Structured Sections**: Clear learning progression from basic concepts to applications
+  2. **Mathematical Content**: Properly formatted LaTeX equations with validation checks
+  3. **Visual Assets**: Plot specifications for PGFPlots, diagram specifications for TikZ, chemistry structures for RDKit
+  4. **Interactive Elements**: Formula playgrounds for key equations with parameter exploration
+  5. **Assessment Items**: Diverse question types aligned with specified difficulty mix
+
+  ## Writing Style Requirements (CRITICAL):
+  **Write formal textbook prose only. Absolutely forbidden:**
+  - Markdown headings (#, ##, ###) or code fences (```)
+  - Bullet points, numbered lists, or list formatting
+  - Raw filenames (e.g., "kech104.pdf") in content
+  - Conversational or informal language
+
+  **Required style:**
+  - Multi-sentence paragraphs with narrative flow
+  - Sectioning through natural transitions between topics
+  - In-text citations as "NCERT Class XI Chemistry (p. 98)" format only
+  - Publication-grade academic prose suitable for textbooks
+  - Figure captions and mathematical expressions are allowed
+
+  ## Quality Standards:
+  - All mathematical expressions must be syntactically correct LaTeX
+  - All plot specifications must be valid PGFPlots JSON
+  - All chemical structures must use valid SMILES notation
+  - All references between sections must use consistent IDs
+  - Content must be pedagogically sound and age-appropriate
+  - Text must read like a professional textbook, not a summary or wiki article
+
+  Generate content that is engaging, mathematically rigorous, and pedagogically effective.
+
+# User prompt template
+user_prompt: |
+  Create a comprehensive {{grade}} {{subject}} chapter on "{{chapter}}" following {{standard}} curriculum standards.
+
+  ## Chapter Specifications:
+  - **Target Audience**: {{grade}} students
+  - **Difficulty**: {{difficulty}} level ({{difficulty_summary}})
+  - **Length**: {{pages_hint}}
+  - **Content Balance**: {{difficulty_exposition}} conceptual explanation, {{difficulty_practice}} practice problems, {{difficulty_extras}} advanced topics
+
+  ## Required Learning Outcomes:
+  Students should be able to:
+  1. **Conceptual Understanding**: Explain fundamental principles and their interconnections
+  2. **Mathematical Application**: Solve problems using appropriate mathematical techniques
+  3. **Real-World Connection**: Apply concepts to practical scenarios and current technology
+  4. **Critical Analysis**: Evaluate problem-solving approaches and identify misconceptions
+
+  ## Content Structure Requirements:
+
+  ### 1. Introduction (15% of content)
+  - Learning objectives clearly stated
+  - Connection to previous knowledge
+  - Overview of chapter applications
+  - Key vocabulary introduction
+
+  ### 2. Core Concepts ({{difficulty_exposition}} of content)
+  - Fundamental principles with clear explanations
+  - Mathematical derivations appropriate to {{difficulty}} level
+  - {{difficulty_examples_per_concept}} worked examples per major concept
+  - Common misconceptions explicitly addressed
+
+  ### 3. Visual Assets (integrate throughout)
+  - **Plots**: Mathematical functions, experimental data, comparative graphs
+  - **Diagrams**: Conceptual illustrations, process flows, geometric constructions
+  - **Chemistry**: Molecular structures, reaction mechanisms (if applicable)
+  - **Interactive Widgets**: Parameter exploration for key equations
+
+  ### 4. Practice Problems ({{difficulty_practice}} of content)
+  - **MCQ ({{difficulty_item_mcq}})**: Conceptual understanding and quick application
+  - **Numerical ({{difficulty_item_numerical}})**: Quantitative problem-solving with proper units
+  - **Application/Reasoning ({{difficulty_item_ar}})**: Real-world scenarios and analytical thinking
+
+  ### 5. Advanced Topics ({{difficulty_extras}} of content)
+  - Extensions beyond basic curriculum
+  - Contemporary applications and research connections
+  - Interdisciplinary connections
+
+  ### 6. Chapter Summary
+  - Key concept review
+  - Important equations and relationships
+  - Study tips and common pitfalls
+
+  ## Technical Requirements:
+  - All equations in LaTeX format with proper syntax validation
+  - Plot specifications as valid PGFPlots JSON with realistic data ranges
+  - Chemical structures as valid SMILES strings
+  - Consistent ID naming conventions throughout
+  - Proper cross-references between sections
+
+  ## Assessment Integration:
+  Include formative assessment opportunities throughout the chapter:
+  - Quick concept checks after major sections
+  - Embedded interactive elements for immediate feedback
+  - Progressive difficulty in problem sets
+  - Metacognitive prompts for self-assessment
+
+  Generate a complete, pedagogically sound chapter that meets these specifications and provides an engaging learning experience for {{grade}} students studying {{subject}}.
+
+# Output contract specification
+contracts:
+  output_mode: "json_schema"           # Use structured JSON Schema output
+  output_grammar_ref: null             # Alternative: specify grammar file
+  schema_validation: "strict"          # Enforce strict schema compliance
+  required_sections: ["meta", "sections"]
+
+# Template metadata for caching and versioning
+template_metadata:
+  created_date: "2025-01-21"
+  last_modified: "2025-01-21"
+  version_history:
+    - version: "v1"
+      date: "2025-01-21"
+      changes: "Initial template creation with comprehensive difficulty policies"
+
+  schema_compatibility:
+    - "reader.v1.schema.json"
+    - "prompt-envelope.v1.schema.json"
+
+  testing_status:
+    - subjects: ["Physics", "Chemistry", "Mathematics"]
+    - difficulties: ["comfort", "hustle", "advanced"]
+    - validation: "passed"
+
+# Usage examples for testing
+example_inputs:
+  physics_comfort:
+    grade: "Class XI"
+    subject: "Physics"
+    chapter: "Laws of Motion"
+    standard: "NCERT"
+    difficulty: "comfort"
+    pages_hint: "Target 8-10 pages with gentle introduction to Newton's laws"
+
+  chemistry_hustle:
+    grade: "Class XII"
+    subject: "Chemistry"
+    chapter: "Chemical Kinetics"
+    standard: "CBSE"
+    difficulty: "hustle"
+    pages_hint: "Balanced theory and numerical problems, 12-15 pages"
+
+  mathematics_advanced:
+    grade: "Class XII"
+    subject: "Mathematics"
+    chapter: "Differential Equations"
+    standard: "ISC"
+    difficulty: "advanced"
+    pages_hint: "Deep mathematical treatment with challenging applications, 15-20 pages"

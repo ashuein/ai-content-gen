@@ -69,3 +69,10 @@ CR_rendered/
 # *.exe
 # *.pdf
 # ghostpdl-10.06.0/
+
+NUL
+CON
+PRN
+AUX
+COM[1-9]
+LPT[1-9]
