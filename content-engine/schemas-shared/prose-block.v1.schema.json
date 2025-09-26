@@ -1,0 +1,37 @@
+{
+  "$id": "prose-block.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ProseBlock v1.0",
+  "description": "Schema for M3 prose block generation output",
+  "type": "object",
+  "properties": {
+    "markdown": {
+      "type": "string",
+      "minLength": 50,
+      "maxLength": 2000,
+      "description": "Markdown content for the prose block"
+    },
+    "wordCount": {
+      "type": "integer",
+      "minimum": 10,
+      "maximum": 10000,
+      "description": "Word count of the prose content"
+    },
+    "keyTerms": {
+      "type": "array",
+      "description": "Key terms introduced or explained in this prose",
+      "items": {
+        "type": "string",
+        "minLength": 2,
+        "maxLength": 50
+      },
+      "maxItems": 8
+    },
+    "difficulty": {
+      "enum": ["comfort", "hustle", "advanced"],
+      "description": "Difficulty level of the content"
+    }
+  },
+  "required": ["markdown", "wordCount", "keyTerms", "difficulty"],
+  "additionalProperties": false
+}

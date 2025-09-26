@@ -1,0 +1,82 @@
+{
+  "$id": "diagram-spec.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DiagramSpec v1.0",
+  "description": "Schema for M3 diagram specification generation output",
+  "type": "object",
+  "properties": {
+    "type": {
+      "enum": ["flowchart", "mind-map", "process", "cycle", "hierarchy"],
+      "description": "Type of diagram to generate"
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9_-]*$",
+            "description": "Unique node identifier"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "description": "Node display text"
+          },
+          "shape": {
+            "enum": ["rect", "circle", "diamond", "ellipse"],
+            "description": "Node shape"
+          }
+        },
+        "required": ["id", "label", "shape"],
+        "additionalProperties": false
+      }
+    },
+    "edges": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string",
+            "description": "Source node ID"
+          },
+          "to": {
+            "type": "string",
+            "description": "Target node ID"
+          },
+          "label": {
+            "type": "string",
+            "maxLength": 30,
+            "description": "Edge label (optional)"
+          },
+          "style": {
+            "enum": ["solid", "dashed", "dotted"],
+            "description": "Edge line style"
+          }
+        },
+        "required": ["from", "to"],
+        "additionalProperties": false
+      }
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 100,
+      "description": "Diagram title"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 300,
+      "description": "Educational description of the diagram's purpose"
+    }
+  },
+  "required": ["type", "nodes", "edges", "title", "description"],
+  "additionalProperties": false
+}

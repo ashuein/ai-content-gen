@@ -1,0 +1,131 @@
+{
+  "$id": "docplan.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DocPlan v1.0",
+  "description": "Schema for M1-Plan module output - matches content-engine DocPlanPayload exactly",
+  "type": "object",
+  "properties": {
+    "meta": {
+      "type": "object",
+      "description": "Chapter metadata",
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "description": "Chapter title"
+        },
+        "subject": {
+          "enum": ["Physics", "Chemistry", "Mathematics"],
+          "description": "Subject domain"
+        },
+        "grade": {
+          "type": "string",
+          "pattern": "^(Class )?(I|V|X|XI|XII|[1-9]|1[0-2])$",
+          "description": "Grade level"
+        },
+        "difficulty": {
+          "enum": ["comfort", "hustle", "advanced"],
+          "description": "Difficulty level"
+        }
+      },
+      "required": ["title", "subject", "grade", "difficulty"],
+      "additionalProperties": false
+    },
+    "learning_objectives": {
+      "type": "array",
+      "description": "Learning objectives for the chapter",
+      "items": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 150
+      },
+      "minItems": 3,
+      "maxItems": 8
+    },
+    "beats": {
+      "type": "array",
+      "description": "Teaching beats with dependencies",
+      "minItems": 6,
+      "maxItems": 25,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^beat-[a-z0-9-]+$",
+            "description": "Unique beat identifier"
+          },
+          "headline": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 100,
+            "description": "Beat title/headline"
+          },
+          "prereqs": {
+            "type": "array",
+            "description": "Prerequisite beat IDs",
+            "items": {
+              "type": "string",
+              "pattern": "^beat-[a-z0-9-]+$"
+            }
+          },
+          "outcomes": {
+            "type": "array",
+            "description": "Learning outcomes for this beat",
+            "items": {
+              "type": "string",
+              "minLength": 5,
+              "maxLength": 200
+            },
+            "minItems": 1,
+            "maxItems": 3
+          },
+          "assets_suggested": {
+            "type": "array",
+            "description": "Suggested assets for this beat",
+            "items": {
+              "type": "string",
+              "pattern": "^(eq|plot|diagram|widget|chem):[a-z0-9_-]+$"
+            },
+            "maxItems": 5
+          }
+        },
+        "required": ["id", "headline", "prereqs", "outcomes", "assets_suggested"],
+        "additionalProperties": false
+      }
+    },
+    "glossary_seed": {
+      "type": "array",
+      "description": "Seed terms for glossary generation",
+      "items": {
+        "type": "string",
+        "minLength": 2,
+        "maxLength": 50
+      },
+      "maxItems": 20
+    },
+    "misconceptions": {
+      "type": "array",
+      "description": "Common misconceptions to address",
+      "items": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 200
+      },
+      "maxItems": 10
+    },
+    "assessment_outline": {
+      "type": "array",
+      "description": "Assessment strategy outline",
+      "items": {
+        "type": "string",
+        "minLength": 5,
+        "maxLength": 100
+      },
+      "maxItems": 8
+    }
+  },
+  "required": ["meta", "learning_objectives", "beats"],
+  "additionalProperties": false
+}

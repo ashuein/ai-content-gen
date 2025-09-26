@@ -1,0 +1,59 @@
+{
+  "$id": "equation-block.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EquationBlock v1.0",
+  "description": "Schema for M3 equation block generation output",
+  "type": "object",
+  "properties": {
+    "latex": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 500,
+      "pattern": "^[^$]*$",
+      "description": "LaTeX equation without surrounding $ delimiters"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 300,
+      "description": "Plain text description of the equation"
+    },
+    "variables": {
+      "type": "array",
+      "description": "Variables and their definitions",
+      "items": {
+        "type": "object",
+        "properties": {
+          "symbol": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 10,
+            "description": "Variable symbol"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 100,
+            "description": "Variable description"
+          },
+          "units": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 20,
+            "description": "SI units or dimensionless"
+          }
+        },
+        "required": ["symbol", "description", "units"],
+        "additionalProperties": false
+      },
+      "maxItems": 8
+    },
+    "derivationHint": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "Optional hint about equation derivation"
+    }
+  },
+  "required": ["latex", "description", "variables"],
+  "additionalProperties": false
+}

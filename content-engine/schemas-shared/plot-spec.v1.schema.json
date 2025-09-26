@@ -1,0 +1,68 @@
+{
+  "$id": "plot-spec.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PlotSpec v1.0",
+  "description": "Schema for M3 plot specification generation output",
+  "type": "object",
+  "properties": {
+    "expr": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "pattern": "^[a-zA-Z0-9+\\-*/().,\\s^{}\\\\]+$",
+      "description": "Mathematical expression for plotting (PGFPlots compatible)"
+    },
+    "domain": {
+      "type": "object",
+      "properties": {
+        "xmin": {
+          "type": "number",
+          "description": "Minimum x value"
+        },
+        "xmax": {
+          "type": "number",
+          "description": "Maximum x value"
+        },
+        "ymin": {
+          "type": "number",
+          "description": "Minimum y value"
+        },
+        "ymax": {
+          "type": "number",
+          "description": "Maximum y value"
+        }
+      },
+      "required": ["xmin", "xmax"],
+      "additionalProperties": false
+    },
+    "samples": {
+      "type": "integer",
+      "minimum": 10,
+      "maximum": 1000,
+      "description": "Number of sample points"
+    },
+    "xlabel": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "X-axis label"
+    },
+    "ylabel": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Y-axis label"
+    },
+    "title": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Plot title"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 300,
+      "description": "Educational description of what the plot shows"
+    }
+  },
+  "required": ["expr", "domain", "samples", "xlabel", "ylabel", "title", "description"],
+  "additionalProperties": false
+}
