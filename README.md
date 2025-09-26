@@ -239,3 +239,74 @@ Constraints:
 Notes:
 - Python venv is used for RDKit; the build invokes the venv’s `python.exe` (or `RDKIT_PYTHON`) directly, so shell activation is not required.
 - Plot axis labels are rendered by PGFPlots (raw LaTeX). Font embedding is controlled via `fontmaps/tex2sys.map` and `DVISVGM_FONT_FORMAT`.
+
+## How to run a test code
+Use the unified index as the authoritative source and pass its chapter metadata via the CLI to the prompt injector.
+
+- Which list to trust: Use chapterName from course_database/unified_index_ncert.json (primary). The simple mapping is a fallback only.
+- How to pass metadata:
+  - chapter (-c): exactly the chapterName string from the unified index
+  - subject (-s): Physics | Chemistry | Mathematics
+  - grade (-g): “Class XI” / “11” (both normalize)
+  - standard: NCERT
+  - difficulty (-d): comfort | hustle | advanced
+
+Example (Gravitation, Class 11 Physics):
+```bash
+npm run content:generate -- -c "Gravitation" -s Physics -g "Class XI" --standard NCERT -d comfort
+```
+This will auto-resolve the PDF from unified_index_ncert.json (e.g., course_database\ncert\class_11_physics_part2\keph201.pdf). If you need to force a PDF, add:
+```bash
+--pdf "course_database\\ncert\\class_11_physics_part2\\keph201.pdf"
+```
+
+Then render:
+```bash
+npm run chapter:build
+```
+
+- Summary
+  - Use unified_index_ncert.json → exact chapterName.
+  - CLI metadata flows: prompt-injector → content-engine → renderer.
+
+
+
+## Notes on content-engine modules, validator, and traffic control codes
+
+### M1–M4 module roles
+
+1. M1 – Plan generator: Turns a PlanRequest into a versioned DocPlan by fabricating beat-level structure, running dependency/asset-format gates via BeatValidator, and finally validating against the docplan schema before returning the envelope.
+
+2. M2 – Scaffold generator: Accepts the DocPlan, checks producer compatibility, groups beats into ordered chapter sections with asset markers, transitions, concept sequences, and metadata, then enforces marker/flow rules and schema validation before emitting the scaffold envelope.
+
+3. M3 – Section generator: Initializes AJV plus specialized validation gates and compilers, then for each section context runs LLM-backed prose/asset generation (with retries), compiles supporting assets, executes the multi-gate validation pipeline (KaTeX, math checks, SMILES, diagrams, style, ID collisions, etc.), updates running state, and emits a schema-validated SectionDoc envelope.
+
+4. M4 – Content assembler: Collates SectionDocs from one chapter, validates ordering/version compatibility, builds Reader-facing sections and asset files, runs reader-schema and cross-reference checks, writes outputs when valid, and surfaces assembly errors otherwise.
+
+### Content renderer validation gates
+1. scripts/build-chapter.ts enforces AJV schemas for DocJSON, PlotSpec, and DiagramSpec, then drives equation checks, TeX rendering, plot compilation, chemistry/diagram rendering, and rejects unknown section types.
+
+2. validator/equation.ts numerically evaluates equation checks and throws when tolerances fail.
+
+3. renderTeXToHTML renders with KaTeX in strict/error mode so malformed TeX aborts the build.
+
+4. compilePlotToSVG allowlists plot expressions, re-validates after param substitution, and raises when TeX or dvisvgm compilation fails.
+
+5. compileDiagramToSVG snaps to grid and enforces required node IDs before producing optimized SVG output.
+
+6. smilesToSVG prefers an RDKit HTTP service but falls back to a local renderer, only accepting outputs containing <svg> and optimizing the result.
+
+
+### LLM traffic limiting, timeouts, and backoff controls
+
+1. The rate limiter configuration caps concurrency, queue time, retries, backoff behavior, circuit-breaker thresholds, and per-minute token-bucket limits tailored for OpenAI usage.
+
+2. execute enforces circuit breaker status, token-bucket consumption, per-correlation queues with queueTimeout, and tracks metrics while handing work to the retryable executor.
+
+3. executeWithRetry applies exponential backoff with jitter, retry whitelisting, and emits retry events; circuit-breaker state transitions guard repeated failures.
+
+4. Health/metrics accessors expose queue sizes, active requests, and last errors for monitoring, and createRateLimiter wires the defaults for consumers.
+
+5. LLMClient centralizes 600 s HTTP timeouts, schema-aware defaults, caching, and funnels every request through the rate limiter, reusing correlation metadata for observability.
+
+6. M3’s prose generation routines add an extra safety layer by requiring an LLM client and retrying each prompt up to three times with incremental delays before failing hard.
